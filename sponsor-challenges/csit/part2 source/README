@@ -1,0 +1,28 @@
+Brief Description:
+ - Heap overflow issue
+ - 32 bit ELF Binary
+ - contain a simple PTRACE anti debugging trick
+ - to trigger the heap overflow to call the function getFlag() to display the flag
+
+Exploit:
+ - Bypass Ptrace trick
+    (1) patch the call to the ptrace(2) syscall with NOP’s
+    (2) overwrite the ptrace(2) function by preloading a custom ELF shared library with LD_PRELOAD
+ - Heap overflow
+   Include python script solution, Script assume binary is hosted on localhost on port 1234
+   Comments in the python script to desc the soln, but generally:
+   1) add in log entry into the system
+   2) add short and long entry
+   3) copy long entry into a short entry: program does not check size when copying
+   4) this will leak address of the different log entry 
+   5) repeat this, until you can leak address of print_log_item function
+   6) using objdump, figure out the different in offset of print_log_item func and getFlag function
+   7) overwrite function ptr on the heap to getFlag function when show 0 is input 
+
+
+heap2_participant is the binary to be given to the participant
+
+heap2_server is the binary to be hosted on the server
+ -include a flag in the format {CSIT:xxxx}
+ -will listen on a particular port, port number is first argument in the programm
+ -if they do not need the server in the binary. can comment out the checking of argc and server_forever function in main() and uncomment call to handler
