@@ -18,12 +18,17 @@ crossctf2017-final-challenges
 * secrit_binary_donut_tuch - heap data structure logic exploit
 * transformers - easy shit challenge
 * the last knight - format string -> canary bypass -> ROP
+* tastyriffs - blackbox challenge
 
 ### hardware
 
 * time_to_take_a_dump - baby
 * there_is_no_spoon - data exfil chal
 * bank_heist - OTP reversing chal
+
+### skypillar
+
+* five levels of reverse engineering hell
 
 ### sponsor-challenges
 
